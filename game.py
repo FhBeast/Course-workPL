@@ -1,10 +1,10 @@
 import pygame
 import os
-from PIL import Image, ImageFilter
 from list_of_level import get_list
 from levelLoader import LevelLoader
 from player import Player, IMG_FOLDER
 from levelController import LevelController
+from imageFilter import ImageFilter
 from effect import Effect
 from menu import Menu
 
@@ -80,8 +80,10 @@ class Game:
                             attack = True
                         if event.key == pygame.K_ESCAPE:
                             sub = self.screen.subsurface(pygame.Rect(0, 0, self.width, self.height))
-                            bg = pygame.Surface((1200, 800))
+                            bg = pygame.Surface((self.width, self.height))
                             bg.blit(sub, (0, 0))
+
+                            bg = ImageFilter.blur(bg, 10, 8)
 
                             if Menu.mainMenu(self.screen, self.fps, bg) == "Quit":
                                 self.closeGame()
