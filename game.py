@@ -42,6 +42,13 @@ class Game:
         except Exception:
             print(f"{CONSOLE_NAME}: Failed to open save")
 
+        answer = Menu.mainMenu(self.screen, self.fps)
+        if answer == "Quit":
+            self.closeGame()
+        elif answer == "New game":
+            number_level = 0
+            self.nextLevel()
+
         # Цикл игры
         while self.running_game:
 
@@ -83,8 +90,12 @@ class Game:
                             bg = pygame.Surface((self.width, self.height))
                             bg.blit(sub, (0, 0))
                             bg = ImageFilter.blur(bg, 10, 8)
-                            if Menu.mainMenu(self.screen, self.fps, bg) == "Quit":
+                            answer = Menu.pauseMenu(self.screen, self.fps, bg)
+                            if answer == "Quit":
                                 self.closeGame()
+                            elif answer == "Restart":
+                                number_level -= 1
+                                self.nextLevel()
                             pygame.mouse.set_visible(False)
 
                 keys = pygame.key.get_pressed()
