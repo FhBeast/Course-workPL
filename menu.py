@@ -7,11 +7,8 @@ class Menu:
         clock = pygame.time.Clock()
         result = "Continue"
 
+        pygame.mouse.set_visible(True)
         menu_elements = pygame.sprite.Group()
-
-        GAME_FOLDER = os.path.dirname(__file__)
-        IMG_FOLDER = os.path.join(GAME_FOLDER, 'img')
-        bgImg = pygame.image.load(os.path.join(IMG_FOLDER, 'bg.jpg'))
 
         menu_is_open = True
         while menu_is_open:

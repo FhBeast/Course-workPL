@@ -82,11 +82,10 @@ class Game:
                             sub = self.screen.subsurface(pygame.Rect(0, 0, self.width, self.height))
                             bg = pygame.Surface((self.width, self.height))
                             bg.blit(sub, (0, 0))
-
                             bg = ImageFilter.blur(bg, 10, 8)
-
                             if Menu.mainMenu(self.screen, self.fps, bg) == "Quit":
                                 self.closeGame()
+                            pygame.mouse.set_visible(False)
 
                 keys = pygame.key.get_pressed()
                 if keys[pygame.K_a]:
