@@ -28,6 +28,7 @@ class Game:
         self.effects.add(self.effect)
         self.running_game = True
         self.running_level = True
+        self.restarting_level = False
 
     def runGame(self):
         pygame.mouse.set_visible(False)
@@ -61,6 +62,7 @@ class Game:
 
             # Цикл уровня
             flag_is_complete = False
+            flag_is_restart = False
             self.running_level = True
             while self.running_level:
                 # Держим цикл на правильной скорости
@@ -94,8 +96,7 @@ class Game:
                             if answer == "Quit":
                                 self.closeGame()
                             elif answer == "Restart":
-                                number_level -= 1
-                                self.nextLevel()
+                                self.restartLevel()
                             pygame.mouse.set_visible(False)
 
                 keys = pygame.key.get_pressed()
@@ -114,8 +115,14 @@ class Game:
                     print(f"{CONSOLE_NAME}: Level completed")
                     self.effect.blackout()
                     flag_is_complete = True
+                if player.rect.top > self.height:
+                    self.effect.blackout()
+                    flag_is_restart = True
                 if self.effect.update():
-                    self.nextLevel()
+                    if flag_is_complete:
+                        self.nextLevel()
+                    elif flag_is_restart:
+                        self.restartLevel()
 
                 # Рендеринг
                 # Фон
@@ -130,7 +137,10 @@ class Game:
                 # Обновляем экран
                 pygame.display.update()
 
-            if number_level + 1 < len(self.level_list) and self.running_game:
+            if self.restarting_level:
+                self.restarting_level = False
+            elif number_level + 1 < len(self.level_list) and self.running_game:
+                print(f"{CONSOLE_NAME}: restart level")
                 number_level += 1
             else:
                 print(f"{CONSOLE_NAME}: Game completed")
@@ -150,3 +160,7 @@ class Game:
 
     def nextLevel(self):
         self.running_level = False
+
+    def restartLevel(self):
+        self.running_level = False
+        self.restarting_level = True
