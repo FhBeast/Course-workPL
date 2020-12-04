@@ -49,7 +49,7 @@ def get_list():
                "= -       -=",
                "=*         =",
                "=- -B+     =",
-               "=P+3== *   =",
+               "=P+3== * * =",
                "============"]
     level_list.append(level_5)
 
@@ -62,5 +62,25 @@ def get_list():
                "=P -    *  =",
                "=-      -  ="]
     level_list.append(level_6)
+
+    level_7 = ["============",
+               "=K         =",
+               "=-        *L",
+               "=   B     -=",
+               "=   B      =",
+               "=   -      =",
+               "=P  * *    =",
+               "=-  -==-   ="]
+    level_list.append(level_7)
+
+    '''level_8 = ["============",
+               "=K         =",
+               "=-        *L",
+               "=   B     -=",
+               "=   B      =",
+               "=   -      =",
+               "=P  * *    =",
+               "=-  -==-   ="]
+    level_list.append(level_8)'''
 
     return level_list

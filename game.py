@@ -139,8 +139,8 @@ class Game:
 
             if self.restarting_level:
                 self.restarting_level = False
-            elif number_level + 1 < len(self.level_list) and self.running_game:
                 print(f"{CONSOLE_NAME}: restart level")
+            elif number_level + 1 < len(self.level_list) and self.running_game:
                 number_level += 1
             else:
                 print(f"{CONSOLE_NAME}: Game completed")
