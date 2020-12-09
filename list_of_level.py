@@ -74,12 +74,12 @@ def get_list():
     level_list.append(level_7)
 
     level_8 = ["============",
-               "=          =",
-               "=K         =",
+               "=  BK+    *L",
+               "=* ---    -=",
                "=-         =",
-               "=        B =",
-               "=        --=",
-               "=P _B  _   L",
+               "=       SB =",
+               "=       -===",
+               "=P*_B  _*===",
                "============"]
     level_list.append(level_8)
 
