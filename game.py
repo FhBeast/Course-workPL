@@ -139,11 +139,9 @@ class Game:
 
             if self.restarting_level:
                 self.restarting_level = False
-                print(f"{CONSOLE_NAME}: restart level")
             elif number_level + 1 < len(self.level_list) and self.running_game:
                 number_level += 1
             else:
-                print(f"{CONSOLE_NAME}: Game completed")
                 self.closeGame()
 
         try:
@@ -157,6 +155,7 @@ class Game:
     def closeGame(self):
         self.running_level = False
         self.running_game = False
+        print(f"{CONSOLE_NAME}: Game closed")
 
     def nextLevel(self):
         self.running_level = False
@@ -164,3 +163,4 @@ class Game:
     def restartLevel(self):
         self.running_level = False
         self.restarting_level = True
+        print(f"{CONSOLE_NAME}: Reload level")

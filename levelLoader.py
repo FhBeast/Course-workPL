@@ -29,6 +29,7 @@ CRYSTAL_DESTROY_IMG = [pygame.image.load(os.path.join(IMG_FOLDER, 'crystal_1.png
                        pygame.image.load(os.path.join(IMG_FOLDER, 'crystal_7.png'))]
 BOX_IMG = pygame.image.load(os.path.join(IMG_FOLDER, 'box.png'))
 STONE_IMG = pygame.image.load(os.path.join(IMG_FOLDER, 'stone.png'))
+STONE_SMALL_IMG = pygame.image.load(os.path.join(IMG_FOLDER, 'stone_small.png'))
 KEY_IMG = pygame.image.load(os.path.join(IMG_FOLDER, 'key.png'))
 SHRUB_IMG = pygame.image.load(os.path.join(IMG_FOLDER, 'shrub.png'))
 PLATFORM_IMG = [pygame.image.load(os.path.join(IMG_FOLDER, 'platform_single.png')),
@@ -51,6 +52,7 @@ KEY = "K"
 SHRUB = "*"
 BOX = "B"
 STONE = "#"
+STONE_SMALL = "_"
 CRYSTAL = "+"
 
 TABLE_0 = 0  # Табличка с изображением кнопок вправо и влево
@@ -133,6 +135,12 @@ class LevelLoader:
                     stone = Entity(x, y, WALL_WIDTH, WALL_HEIGHT, STONE_IMG)
                     level.entities.add(stone)
                     level.platforms.append(stone)
+                
+                # Если это маленький камень
+                elif level_map[row][col] == STONE_SMALL:
+                    stone_small = Entity(x, y + 70, WALL_WIDTH, 30, STONE_SMALL_IMG)
+                    level.entities.add(stone_small)
+                    level.platforms.append(stone_small)
 
                 # Если это кристалл
                 elif level_map[row][col] == CRYSTAL:

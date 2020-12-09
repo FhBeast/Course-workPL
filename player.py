@@ -7,7 +7,6 @@ HEIGHT = 90
 JUMP_POWER = 17
 GRAVITY = 0.7  # Гравитация
 ATTACK_COOLDOWN = 15
-ADD_SPEED_DECELERATION = 1
 
 GAME_FOLDER = os.path.dirname(__file__)  # Таков путь к каталогу с файлами
 IMG_FOLDER = os.path.join(GAME_FOLDER, 'img')
