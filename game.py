@@ -31,8 +31,6 @@ class Game:
         self.restarting_level = False
 
     def runGame(self):
-        pygame.mouse.set_visible(False)
-
         number_level = 0
         
         try:
@@ -52,7 +50,7 @@ class Game:
 
         # Цикл игры
         while self.running_game:
-
+            pygame.mouse.set_visible(False)
             player = Player()  # Создаем игрока
 
             level = LevelLoader.load_level(self.level_list[number_level])  # Загружаем уровень
