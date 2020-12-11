@@ -31,6 +31,8 @@ BOX_IMG = pygame.image.load(os.path.join(IMG_FOLDER, 'box.png'))
 STONE_IMG = pygame.image.load(os.path.join(IMG_FOLDER, 'stone.png'))
 STONE_SMALL_IMG = pygame.image.load(os.path.join(IMG_FOLDER, 'stone_small.png'))
 KEY_IMG = pygame.image.load(os.path.join(IMG_FOLDER, 'key.png'))
+WIN_IMG = pygame.image.load(os.path.join(IMG_FOLDER, 'you_win.png'))
+CAKE_IMG = pygame.image.load(os.path.join(IMG_FOLDER, 'cake.png'))
 SHRUB_IMG = pygame.image.load(os.path.join(IMG_FOLDER, 'shrub.png'))
 PLATFORM_IMG = [pygame.image.load(os.path.join(IMG_FOLDER, 'platform_single.png')),
                 pygame.image.load(os.path.join(IMG_FOLDER, 'platform_right.png')),
@@ -54,6 +56,8 @@ BOX = "B"
 STONE = "#"
 STONE_SMALL = "_"
 CRYSTAL = "+"
+WIN = "W"
+CAKE = "C"
 
 TABLE_0 = 0  # Табличка с изображением кнопок вправо и влево
 TABLE_1 = 1  # Табличка с изображением кнопки E
@@ -121,6 +125,16 @@ class LevelLoader:
                 # Если это табличка №2
                 elif level_map[row][col] == str(TABLE_3):
                     table = Entity(x, y, 0, 0, TABLE_IMG[TABLE_3])
+                    level.entities.add(table)
+
+                # Если это надпись "You win"
+                elif level_map[row][col] == WIN:
+                    table = Entity(x, y, 0, 0, WIN_IMG)
+                    level.entities.add(table)
+
+                # Если это торт (Cake is lie)
+                elif level_map[row][col] == CAKE:
+                    table = Entity(x, y, 0, 0, CAKE_IMG)
                     level.entities.add(table)
 
                 # Если это ящик

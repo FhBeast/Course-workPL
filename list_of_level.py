@@ -132,5 +132,15 @@ def get_list():
                 "=_       K_=",
                 "=-        -="]
     level_list.append(level_13)
+    
+    level_14 = ["============",
+                "=          =",
+                "= W        =",
+                "=          =",
+                "=          =",
+                "=          =",
+                "=P       C =",
+                "============"]
+    level_list.append(level_14)
 
     return level_list
