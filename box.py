@@ -33,6 +33,9 @@ class Box(pygame.sprite.Sprite):
         if self.fall:
             self.speedFall += GRAVITY
 
+        if self.rect.top > 2000:
+            self.kill()
+
         self.fall = True
 
         self.rect.y += self.speedFall  # Двигаемся по оси y
